@@ -20,7 +20,7 @@ public class Alumno {
 
     private String nombre;
 
-    private  String Apellido;
+    private  String apellido;
 
     private LocalDate fechaNacimiento;
 

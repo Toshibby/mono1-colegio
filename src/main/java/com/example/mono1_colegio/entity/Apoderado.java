@@ -1,9 +1,17 @@
 package com.example.mono1_colegio.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Apoderado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,8 +35,6 @@ public class Apoderado {
 
     private LocalDate createdAt;
 
-    @OneToMany
-    @JoinColumn(name = "alumno_id", nullable = false)
-    private Alumno alumno;
-
+    @OneToMany(mappedBy = "apoderado", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
+    private List<Alumno> alumnos;
 }
